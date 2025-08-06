@@ -63,3 +63,34 @@ class DiagonalClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
+
+
+class HeaderTriangular extends StatelessWidget {
+  const HeaderTriangular({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipPath(
+      clipper: TriangleClipper(),
+      child: Container(
+        height: 900,
+        color: Colors.blueAccent,
+      ),
+    );
+  }
+}
+
+class TriangleClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(size.width / 2, size.height); // punta del triángulo en el centro abajo
+    path.lineTo(size.width, 0); // top-right
+    path.close(); // cierra al punto (0,0)
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
