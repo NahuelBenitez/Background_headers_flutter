@@ -6,7 +6,7 @@ class HeadersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HeaderCuadrado()
+      body: HeaderCircular()
       // Center(
       //   child: Text("hola mundo"),
       // ),
