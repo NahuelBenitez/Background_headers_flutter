@@ -30,3 +30,36 @@ class HeaderCircular extends StatelessWidget {
     );
   }
 }
+
+
+class HeaderDiagonal extends StatelessWidget {
+  const HeaderDiagonal({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipPath(
+      clipper: DiagonalClipper(),
+      child: Container(
+        height: 600,
+        color: Colors.blueAccent,
+       
+      ),
+    );
+  }
+}
+
+class DiagonalClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 100); 
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, 0); 
+    path.close(); 
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
