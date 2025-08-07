@@ -1,20 +1,34 @@
-import 'package:backgrounds_styles/src/pages/headers_page.dart';
+import 'package:backgrounds_styles/src/models/slider_model.dart';
+import 'package:backgrounds_styles/src/pages/slideshow_onboarding_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SliderModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-    
-    debugShowCheckedModeBanner: false,
-    title: 'Headers app',
-    home: HeadersPage() ,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Slideshow Onboarding',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home: const SlideshowOnboardingPage(),
     );
   }
 }
